@@ -23,6 +23,7 @@
         android:contentDescription="@null"
         android:background="@null"
         android:scaleType="fitCenter"
+        android:onClick="clickConfigButton"
         />
     <ImageButton 
         android:layout_width="match_parent"
@@ -32,5 +33,6 @@
         android:contentDescription="@null"
         android:background="@null"
         android:scaleType="fitCenter"
+        android:onClick="clickNeruButton"
         />
 </LinearLayout>
