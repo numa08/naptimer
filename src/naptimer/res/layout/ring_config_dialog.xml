@@ -10,11 +10,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         >
-        <TextView 
+        <ImageView 
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="アラーム"
+            android:src="@drawable/alerm"
+            android:scaleType="fitCenter"
+            android:background="@null"
+            android:contentDescription="@null"
             />
         <Switch 
             android:layout_width="0dp"
@@ -27,11 +30,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         >
-        <TextView 
+        <ImageView 
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="バイブレーション"
+            android:src="@drawable/vive"
+            android:scaleType="fitCenter"
+            android:background="@null"
+            android:contentDescription="@null"
             />
         <Switch 
             android:layout_width="0dp"
