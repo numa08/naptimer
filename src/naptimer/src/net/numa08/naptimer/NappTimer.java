@@ -26,7 +26,7 @@ public class NappTimer extends Activity implements RingConfigDialogListener{
 		}
 		fragmentTransaction.addToBackStack(null);
 		
-		final RingConfigDialog dialog = RingConfigDialog.newInstance(this);
+		final RingConfigDialog dialog = RingConfigDialog.newInstance(this,false,false);
 		dialog.show(fragmentTransaction, RingConfigDialog.IDENTIFIER);
 	}
 	
