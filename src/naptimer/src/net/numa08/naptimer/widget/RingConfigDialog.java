@@ -20,10 +20,10 @@ public class RingConfigDialog extends DialogFragment implements OnClickListener{
 	
 	private RingConfigDialogListener mListener;
 	private Switch mRingAlerSwitch;
-	private Switch mVivrateSwitch;
+	private Switch mVibratoSwitch;
 	
 	public static interface RingConfigDialogListener extends Serializable{
-		public void onClickOnWithChangeConfig(RingConfigDialog dialog, boolean isRingAlerm , boolean isVibrat);
+		public void onClickOnWithChangeConfig(RingConfigDialog dialog, boolean isRingAlerm , boolean isVibrato);
 	}
 	
 	public static RingConfigDialog newInstance(RingConfigDialogListener listener){
@@ -52,14 +52,14 @@ public class RingConfigDialog extends DialogFragment implements OnClickListener{
 		final View layout = inflater.inflate(R.layout.ring_config_dialog, container, false);
 		layout.findViewById(R.id.dialog_ok_button).setOnClickListener(this);
 		mRingAlerSwitch = (Switch)layout.findViewById(R.id.alertm_switch);
-		mVivrateSwitch = (Switch)layout.findViewById(R.id.vive_switch);
+		mVibratoSwitch = (Switch)layout.findViewById(R.id.vibe_switch);
 		return layout;
 	}
 
 	@Override
 	public void onClick(View v) {
 		final boolean isRingAlerm = mRingAlerSwitch.isChecked();
-		final boolean isViverate = mVivrateSwitch.isChecked();
+		final boolean isViverate = mVibratoSwitch.isChecked();
 		if(mListener == null){
 			return;
 		}
