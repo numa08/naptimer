@@ -5,10 +5,30 @@ import net.numa08.naptimer.widget.RingConfigDialog.RingConfigDialogListener;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
 public class NappTimer extends Activity implements RingConfigDialogListener{
+	
+	private static final String PREFERENCE_KEY = NappTimer.class.getPackage().getName() + ".SHARED_PREFERENCE";
+	
+	private static enum RingConfigExtra{
+		IsRingAlerm(NappTimer.class.getPackage().getName() + ".PREFERENCE_IS_RING_ALERM"),
+		IsVibrat(NappTimer.class.getPackage().getName() + ".PREFERENCE_IS_VIBRAT"),
+		;
+		
+		private String key;
+		private RingConfigExtra(String key){
+			this.key = key;
+		}
+		
+		@Override
+		public String toString() {
+			return this.key;
+		}
+	}
 	
 	private static final long serialVersionUID = -9072959517189184730L;
 
@@ -26,14 +46,22 @@ public class NappTimer extends Activity implements RingConfigDialogListener{
 		}
 		fragmentTransaction.addToBackStack(null);
 		
-		final RingConfigDialog dialog = RingConfigDialog.newInstance(this,false,false);
+		final SharedPreferences pref = getSharedPreferences(PREFERENCE_KEY, Context.MODE_PRIVATE);
+		final boolean isRingAlerm = pref.getBoolean(RingConfigExtra.IsRingAlerm.toString(), true);
+		final boolean isVibrat = pref.getBoolean(RingConfigExtra.IsVibrat.toString(), true);
+		final RingConfigDialog dialog = RingConfigDialog.newInstance(this,isRingAlerm,isVibrat);
 		dialog.show(fragmentTransaction, RingConfigDialog.IDENTIFIER);
 	}
 	
 	public void clickNeruButton(View view){}
 
 	@Override
-	public void onClickOnWithChangeConfig(RingConfigDialog dialog,
-			boolean isRingAlerm, boolean isVibrat) {}
+	public void onClickOnWithChangeConfig(RingConfigDialog dialog,boolean isRingAlerm, boolean isVibrat) {
+		dialog.dismiss();
+		getSharedPreferences(PREFERENCE_KEY, Context.MODE_PRIVATE).edit()
+						.putBoolean(RingConfigExtra.IsRingAlerm.toString(), isRingAlerm)
+						.putBoolean(RingConfigExtra.IsVibrat.toString(), isVibrat)
+						.commit();
+	}
 	
 }
