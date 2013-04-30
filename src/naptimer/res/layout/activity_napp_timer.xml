@@ -10,7 +10,7 @@
     android:weightSum="10"
     android:gravity="bottom"
     tools:context=".NappTimer" >
-    <View 
+    <net.numa08.view.DrumPicker 
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7"
